@@ -1,4 +1,5 @@
 <?php
+include "function.php";
 include "includes/admin_header.php"
 ?>
     <!-- Navigation -->
@@ -19,23 +20,7 @@ include "includes/admin_navigation.php"
                     </h1>
                     <div class="col-xs-6">
                         <?php
-                        global $connection;
-                        if(isset($_POST['submit'])){
-                            $cat_title = $_POST['cat_title'];
-
-                            if($cat_title == "" || empty($cat_title)){
-                                echo 'This field should not be empty';
-                            } else {
-                                $query = "INSERT INTO categories(cat_title) ";
-                                $query .=  "VALUE('{$cat_title}') ";
-
-                                $create_category_query = mysqli_query($connection, $query);
-
-                                if(!$create_category_query){
-                                    die('QUERY FAILED' . mysqli_error($connection));
-                                }
-                            }
-                        }
+                        insertCategories();
                         ?>
 
                         <form action="" method="post">
@@ -49,14 +34,14 @@ include "includes/admin_navigation.php"
                             </div>
 
                         </form>
+                        <?php
+                        //                        UPDATE AND INCLUDE QUERY
+                        updateCategories();
+                        ?>
+
+
                     </div>
                     <div class="col-xs-6">
-
-                        <?php
-                        global $connection;
-                        $query = "SELECT * FROM categories";
-                        $select_categories = mysqli_query($connection, $query);
-                        ?>
 
                         <table class="table table-bordered table-hover">
                             <thead>
@@ -67,16 +52,15 @@ include "includes/admin_navigation.php"
                             </thead>
                             <tbody>
                             <?php
-                            while ($row = mysqli_fetch_assoc($select_categories)) {
-                                $cat_id = $row["cat_id"];
-                                $cat_title = $row["cat_title"];
-                                echo "<tr>";
-                                echo "<td>{$cat_id}</td>";
-                                echo "<td>{$cat_title}</td>";
-                                echo "</tr>";
-                            }
+                            //                            FIND ALL CATEGORIES
+
+                            findAllCategories();
                             ?>
 
+                            <?php
+                            //                            DELETE QUERY
+                            deleteCategories();
+                            ?>
 
                             </tbody>
                         </table>
