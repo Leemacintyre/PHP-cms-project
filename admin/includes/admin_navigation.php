@@ -50,8 +50,8 @@
         <a href="./categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
       </li>
 
-      <li class="active">
-        <a href="index.php"><i class="fa fa-fw fa-file"></i> Comments</a>
+      <li class="">
+        <a href="comments.php"><i class="fa fa-fw fa-file"></i> Comments</a>
       </li>
       <li>
         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i
@@ -65,7 +65,7 @@
           </li>
         </ul>
       </li>
-      <li class="active">
+      <li class="">
         <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Profile</a>
       </li>
     </ul>
