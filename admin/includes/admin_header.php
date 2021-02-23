@@ -1,6 +1,13 @@
 <?php
 ob_start();
+session_start();
 include "../includes/db.php"
+?>
+
+<?php
+if(!isset($_SESSION['user_role'])){
+  header("Location: ../index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
