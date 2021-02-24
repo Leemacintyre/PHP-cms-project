@@ -32,10 +32,10 @@ if (isset($_POST['update_post'])) {
 
   move_uploaded_file($post_image_temp, "../images/$post_image");
 
-  if(empty($post_image)) {
+  if (empty($post_image)) {
     $query = "SELECT * FROM posts WHERE post_id = $the_post_id";
     $select_image = mysqli_query($connection, $query);
-    while($row = mysqli_fetch_assoc($select_image)) {
+    while ($row = mysqli_fetch_assoc($select_image)) {
       $post_image = $row['post_image'];
     }
   }
@@ -80,16 +80,24 @@ if (isset($_POST['update_post'])) {
   </div>
 
 
-
   <div class="form-group">
     <label for="title">Post Author</label>
     <input value="<?php echo $post_author; ?>" type="text" class="form-control" name="post_author"/>
   </div>
 
   <div class="form-group">
-    <label for="post_tags">Post Status</label>
-    <input value="<?php echo $post_status; ?>" type="text" class="form-control" name="post_status"/>
+    <select name="post_status" id="">
+      <option value="<?php $post_status ?>"> <?php echo $post_status; ?> </option>
+      <?php
+      if ($post_status == 'published') {
+        echo "<option value='draft'> Draft </option>";
+      } else {
+        echo "<option value='published'> Published </option>";
+      }
+      ?>
+    </select>
   </div>
+
 
   <div class="form-group">
     <img width="100px" src="../images/<?php echo $post_image ?>">

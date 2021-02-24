@@ -61,7 +61,7 @@
             <a href="users.php">View all users</a>
           </li>
           <li>
-            <a href="users.php?source=add_user">Add users</a>posts.            php?source=add_post
+            <a href="users.php?source=add_user">Add users</a>
           </li>
         </ul>
       </li>
