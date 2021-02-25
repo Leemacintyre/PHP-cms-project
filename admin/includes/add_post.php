@@ -1,5 +1,6 @@
 <?php
 global $connection;
+
 if (isset($_POST['create_post'])) {
   $post_title = $_POST['title'];
   $post_author = $_POST['author'];
@@ -10,8 +11,6 @@ if (isset($_POST['create_post'])) {
   $post_tags = $_POST['post_tags'];
   $post_content = $_POST['post_content'];
   $post_date = date('d-m-y');
-//  $post_comment_count = 4;
-
   move_uploaded_file($post_image_temp, "../images/$post_image");
 
   $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, 
@@ -70,10 +69,11 @@ if (isset($_POST['create_post'])) {
 
   <div class="form-group">
     <label for="post_content">Post Content</label>
-    <textarea class="form-control" name="post_content" id="" rows="10" cols="30"></textarea>
+    <textarea class="form-control" name="post_content" id="body" rows="10" cols="30"></textarea>
   </div>
 
   <div class="form-group">
     <input class="btn btn-primary" type="submit" name="create_post" value="Publish Post">
   </div>
 </form>
+

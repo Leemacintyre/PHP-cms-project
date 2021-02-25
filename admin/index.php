@@ -142,6 +142,10 @@ include "includes/admin_navigation.php"
       </div>
       <div class="row">
         <?php
+        $query = "SELECT * FROM posts WHERE post_status = 'published' ";
+        $select_all_published_comments = mysqli_query($connection,$query);
+        $post_published_count = mysqli_num_rows($select_all_published_comments);
+
         $query = "SELECT * FROM posts WHERE post_status = 'draft' ";
         $select_all_draft_posts = mysqli_query($connection, $query);
         $post_draft_count = mysqli_num_rows($select_all_draft_posts);
@@ -165,8 +169,8 @@ include "includes/admin_navigation.php"
               ['Data', 'Count',],
 
               <?php
-              $element_text = ['Active Posts', 'Draft Posts', 'Comments', 'Unapproved Posts', 'Users','Subscribers', 'Categories'];
-              $element_count = [$post_count, $post_draft_count ,$comment_count, $comment_draft_count, $user_count, $subscriber_count, $category_count];
+              $element_text = ['All Posts', 'Published Posts', 'Draft Posts', 'Comments', 'Unapproved Posts', 'Users','Subscribers', 'Categories'];
+              $element_count = [$post_count,$post_published_count , $post_draft_count ,$comment_count, $comment_draft_count, $user_count, $subscriber_count, $category_count];
 
               for ($i = 0; $i < count($element_text); $i++) {
                 echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
