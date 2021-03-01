@@ -26,9 +26,12 @@
 
         ?>
 
-
         <li>
           <a href="admin/">Admin</a>
+        </li>
+
+        <li>
+          <a href="registration.php">Registration</a>
         </li>
         <?php
         session_start();
